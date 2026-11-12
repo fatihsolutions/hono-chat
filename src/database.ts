@@ -1,5 +1,12 @@
 import { DatabaseSync } from "node:sqlite";
-export const db = new DatabaseSync('./src/tmp/database.db')
+import { mkdirSync } from 'node:fs';
+import { join } from 'node:path'
+const dbDirectory = join(process.cwd(), 'data')
+mkdirSync(dbDirectory, { recursive: true })
+
+export const db = new DatabaseSync(
+    join(dbDirectory, 'database.db')
+)
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS messages(
