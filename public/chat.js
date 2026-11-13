@@ -78,23 +78,31 @@ chatUsers.forEach((user) => {
 loadMessages();
 
 function sendMessage() {
-    const message = input.value;
+    const message = input.value.trim();
     if (!message) return;
 
     if (socket.readyState === WebSocket.OPEN) {
-        const data =
-        {
+        const data = {
             from: currentUser,
             to: activeUser,
-            message: input.value
+            message: message
         };
+
+        console.log("Gönderen:", data.from);
+        console.log("Alıcı:", data.to);
+        console.log("Mesaj:", data.message);
+
         socket.send(JSON.stringify(data));
+
         const messageElement = document.createElement('p');
         messageElement.textContent = data.message;
         messageElement.className =
-            'bg-purple-500 text-white p-3 rounded-xl w-fit self-end';
+            'bg-[var(--message-color)] text-white p-3 rounded-xl w-fit self-end';
+
         chatMessages.appendChild(messageElement);
         input.value = '';
+    } else {
+        console.error("WebSocket bağlantısı açık değil!");
     }
 }
 
