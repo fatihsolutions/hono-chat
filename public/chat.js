@@ -32,7 +32,7 @@ async function loadMessages() {
         message.textContent = data.message;
 
         message.className = data.sender === currentUser
-            ? 'bg-purple-500 text-white p-3 rounded-xl w-fit self-end'
+            ? 'bg-[#2563EB] text-white p-3 rounded-xl w-fit self-end'
             : 'bg-gray-200 text-black p-3 rounded-xl w-fit self-start';
         chatMessages.appendChild(message);
     });
@@ -131,3 +131,23 @@ function backToContacts() {
     chatView.classList.add('hidden');
     chatView.classList.remove('grid');
 }
+
+const searchInput = document.getElementById('searchConversations');
+
+searchInput.addEventListener('input', function () {
+
+    const searchValue = searchInput.value.toLowerCase().trim();
+
+    chatUsers.forEach(function (user) {
+
+        const userName = user.textContent.toLowerCase();
+
+        if (userName.includes(searchValue)) {
+            user.classList.remove('hidden');
+        } else {
+            user.classList.add('hidden');
+        }
+
+    });
+
+});

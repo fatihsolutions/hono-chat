@@ -11,7 +11,7 @@
     <title>Hono Chat</title>
 </head>
 
-<body class="m-0 p-0 md:p-6 bg-fuchsia-100">
+<body class="m-0 p-0 md:p-6 bg-blue-300">
 
     <div class="grid grid-cols-1 md:grid-cols-[1fr_4fr] h-dvh md:h-[cal(100dvh-3rem)] w-full min-w-0 overflow-hidden">
 
@@ -43,7 +43,7 @@
                         <path d="m21 21-4.34-4.34" />
                         <circle cx="11" cy="11" r="8" />
                     </svg></span>
-                <input type="search" placeholder="Search Conversations"
+                <input id="searchConversations" type="search" placeholder="Search Conversations"
                     class="flex-1 min-w-0 bg-transparent outline-none">
 
                 <span class="text-gray-400 bg-white rounded-l px-1">⌘ K</span>
@@ -138,7 +138,11 @@
             class="hidden md:grid grid-rows-[auto_minmax(0,1fr)_auto] h-full min-h-0 min-w-0 w-full overflow-hidden">
             <header class="p-4 border-b bg-white flex justify-between items-center rounded-r-xl">
                 <div class="flex items-center gap-1.5 bg-[#F7F8FD] w-full rounded-2xl h-19 px-4">
-                    <div class="w-10 h-10 bg-[#7c3aed] rounded-full flex justify-center items-center">
+                    <button type="button" onclick="backToContacts()"
+                        class="md:hidden flex items-center justify-center w-6 h-10 shrink-0 cursor-pointer text-xl">
+                        ←
+                    </button>
+                    <div class="w-10 h-10 bg-slate-700 rounded-full flex justify-center items-center">
                         <p class="w-6 h-6 object-contain brightness-0 invert">FD</p>
                     </div>
                     <div>
@@ -199,7 +203,7 @@
                     <img class="" src="/public/images/happy.png" alt="">
                 </div>
 
-                <button id="sendButton" type="button" class="shrink-0 bg-[#b487ef] text-white px-4 py-3 rounded-lgs"
+                <button id="sendButton" type="button" class="shrink-0 bg-[#1E293B] text-white px-4 py-3 rounded-lgs"
                     id="sendButton">Send</button>
             </footer>
         </div>

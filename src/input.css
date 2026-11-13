@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+:root {
+    --avatar-color: #334155;
+    --message-color: #2563eb;
+    --send-color: #1e293b;
+}
